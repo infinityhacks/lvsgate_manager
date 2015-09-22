@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'lvsgate_manager.views.home', name='home'),
+    url(r'^lvsgate/$', 'lvsgate_manager.views.home', name='home'),
     url(r'^lvsgate/vs/$', 'lvsgate_manager.views.list_vs'),
     url(r'^lvsgate/vs/add/$', 'lvsgate_manager.views.add_vs'),
     url(r'^lvsgate/vs/del/$', 'lvsgate_manager.views.del_vs'),

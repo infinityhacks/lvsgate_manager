@@ -43,7 +43,14 @@
     </div>
     <!-- END Header -->
     
-    
+    {% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="/">Home</a>
+    &rsaquo;
+    {% block prevlink %} {{ prevlink }} {% endblock %}
+    {% if title %}{{ title }}{% endif %}
+    </div>
+    {% endblock %}
 
     
         

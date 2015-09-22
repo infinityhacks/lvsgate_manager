@@ -18,7 +18,7 @@ def home(request):
 
 @permission_required
 def list_vs(request):
-  return render_to_response("vs.html")
+  return render_to_response("vs.html", {'title': 'Virtual server'})
  
 
 def add_vs(request):

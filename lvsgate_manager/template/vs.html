@@ -1,7 +1,11 @@
 {% extends "lvsgate_base.html" %}
 
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
 {% block extrastyle %}
-<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/changelists.css" />
 {% endblock %}
 
 {% block extrahead %}
@@ -11,17 +15,110 @@
 <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
 <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
 <script type="text/javascript" src="/static/admin/js/actions.js"></script>
-<script type="text/javascript" src="/static/admin/js/SelectBox.js"></script>
-<script type="text/javascript" src="/static/admin/js/SelectFilter2.js"></script>
-<script type="text/javascript" src="/static/admin/js/calendar.js"></script>
-<script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+
+<script type="text/javascript">
+(function($) {
+	    $(document).ready(function($) {
+		            $("tr input.action-select").actions();
+			        });
+})(django.jQuery);
+</script>
 {% endblock %}
 
 
-{% block bodyclass %}auth-user change-form{% endblock %}
+{% block bodyclass %}change-list{% endblock %}
 
-{% block coltype %}colM{% endblock %}
+{% block coltype %}flex{% endblock %}
 
 {% block content %}
+<h1>Select virtual server to change<h1>
+<div id="content-main">
+
+	<ul class="object-tools">
+
+	<li>
+	<a href="/lvsgate/vs/add/" class="addlink">
+	Add virtual server
+	</a>
+	</li>
+
+	</ul>
+
+    <div class="module filtered" id="changelist">
+
+	<div id="toolbar">
+	    <form id="changelist-search" action="" method="get">
+		<div><!-- DIV needed for valid HTML -->
+			<label for="searchbar"><img src="/static/admin/img/icon_searchbox.png" alt="Search" /></label>
+			<input type="text" size="40" name="q" value="" id="searchbar" />
+			<input type="submit" value="Search" />
+		</div>
+	    </form>
+	</div>
+	
+	<script type="text/javascript">document.getElementById("searchbar").focus();</script>
+
+	<form id="changelist-form" action="" method="post">
+
+	<div class="actions">
+	<label>Action: <select name="action">
+	<option value="" selected="selected">---------</option>
+	<option value="delete_selected">Delete selected vs</option>
+	</select></label><input type="hidden" class="select-across" value="0" name="select_across" />
+	<button type="submit" class="button" title="Run the selected action" name="index" value="0">Go</button>
+
+	<script type="text/javascript">var _actions_icnt="2";</script>
+	<span class="action-counter">0 of 2 selected</span>
+
+	</div>
+
+	<div class="results">
+	<table id="result_list">
+	<thead>
+	<tr>
+
+	<th>
+	<div class="text"><span><input type="checkbox" id="action-toggle" /></span></div>
+	<div class="clear"></div>
+	</th>
+
+	<th scope="col"  class="sortable sorted ascending">
+	<div class="sortoptions">
+	<a class="sortremove" href="?o=" title="Remove from sorting"></a>
+	<a href="?o=-1" class="toggle ascending" title="Toggle sorting"></a>
+	</div>
+	<div class="text">vs name</div>
+	<div class="clear"></div>
+	</th>
+
+	<th scope="col"  class="sortable">
+        <div class="text">ip</div>
+	<div class="clear"></div>
+	</th>
+
+        <th scope="col"  class="sortable">
+        <div class="text">port</div>
+	<div class="clear"></div>
+	</th>
+
+        <th scope="col"  class="sortable">
+        <div class="text">protocol</div>
+	<div class="clear"></div>
+	</th>
+
+	<th scope="col"  class="sortable">
+        <div class="text">scheduler</div>
+	<div class="clear"></div>
+	</th>
+
+	</tr>
+	</thead>
+	</table>
+	</div>
+
+	</form>
+    </div>
+
+</div>
 
 {% endblock %}
