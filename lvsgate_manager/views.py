@@ -29,7 +29,8 @@ def list_vs(request):
 def add_vs(request):
   title = "Add virtual server"
   return render_to_response("vs_edit.html",
-        {'title': title,})
+        {'title': title, 'rise_nums': range(2, 11),
+         'fall_nums': range(2, 11),})
 
 def del_vs(request):
   pass

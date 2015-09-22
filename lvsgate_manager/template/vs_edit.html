@@ -39,30 +39,35 @@ src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
 <div>
 <fieldset class="module aligned ">
 
-<div class="form-row">
-
+    <div class="form-row">
 	<div>
 	<label for="id_vsname" class="required">VS name:</label> 
 	<input id="id_vsname" type="text" name="vsname" value="" maxlength="256" />
-	<p class="help">Required.  256 characters or fewer.  Letters, digits and -/_ only.</p>
+	<!--<p class="help">Required.  256 characters or fewer.  Letters, digits and -/_ only.</p>-->
 	</div>
+    </div>
 
+    <div class="form-row">
 	<div>
 	<label for="id_vsip" class="required">VS ip port:</label> 
 	<input id="id_vsip" type="text" name="vsip" value="" maxlength="256" />
 	:
 	<input id="id_vsport" type="text" name="vsport" value="80" maxlength="5" style="width:40px"/>
 	</div>	
+    </div>
 
+    <div class="form-row">
 	<div>
 	<label for="id_protocol" class="required">Protocol:</label>
 	<select name="protocol">
-	<option value="TCP" selected="selected">UDP</option>
+	<option value="TCP" selected="selected">TCP</option>
 	<option value="UDP">UDP</option>
 	</select>
 	<input id="id_protocol" type="hidden" class="select-across" value="0" name="select_across" />
 	</div>
+    </div>
 
+    <div class="form-row">
 	<div>
 	<label for="id_fwd" class="required">FWD Method:</label>
 	<select name="fwd_method">
@@ -71,7 +76,9 @@ src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
 	</select>
 	<input id="id_fwd" type="hidden" class="select-across" value="0" name="select_across" />
 	</div>
+    </div>
 
+    <div class="form-row">
 	<div>
 	<label for="id_sched" class="required">Scheduler:</label>
 	<select name="sched">
@@ -82,10 +89,75 @@ src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
 	</select>
 	<input id="id_sched" type="hidden" class="select-across" value="0" name="select_across" />
 	</div>
+    </div>
+	
+
+    <div class="form-row">
+	<div>
+	<label for="id_ptime" class="required">Persistence timeout:</label> 
+	<input id="id_ptime" type="int" name="vsname" value="0"/>
+	<p class="vCheckboxLabel">Session persistence seconds, zero disabled.</p>
+	</div>
+    </div>
+
+
+    <div class="form-row">
+	<div>
+	<label for="id_syn_proxy" class="required">SynProxy:</label><input checked="checked" type="checkbox" name="syn_proxy" id="id_syn_proxy" />
+	<label for="id_syn_proxy" class="vCheckboxLabel">Synflood defence.</label>
+	</div>
+    </div>
 
 </div>
 
 </fieldset>
+
+<fieldset class="module aligned ">
+    	<h2>Health Check</h2>
+	
+    <div class="form-row">
+	<div>
+	<label for="id_hc_type" class="required">Check type:</label>
+	<select name="fwd_method">
+	<option value="TCP" selected="selected">TCP</option>
+	<option value="HTTP">HTTP</option>
+	</select>
+	<input id="id_fwd" type="hidden" class="select-across" value="0" name="select_across" />
+	</div>
+    </div>
+
+    <div class="form-row">
+    	<div>
+	<label for="id_hc_rise" class="required">Rise times:</label>
+	<select name="hc_rise">
+	<option value="1" selected="selected">1</option>
+	{% for x in rise_nums %}
+	<option value="{{x}}">{{x}}</option>
+	{% endfor %}
+	</select>
+	<input id="id_hc_rise" type="hidden" class="select-across" value="0" name="select_across" />
+	</div>
+    </div>
+	 
+    <div class="form-row">
+	<div>
+	<label for="id_hc_fall" class="required">Fall times:</label>
+	<select name="hc_fall">
+	<option value="1" selected="selected">1</option>
+	{% for x in fall_nums %}
+	<option value="{{x}}">{{x}}</option>
+	{% endfor %}
+	</select>
+	<input id="id_hc_fall" type="hidden" class="select-across" value="0" name="select_across" />
+	</div>
+    </div>
+</fieldset>
+
+<fieldset class="module aligned ">
+    <h2>Real Server</h2>
+
+</fieldset>
+
 </div>
 
 {% endblock %}
