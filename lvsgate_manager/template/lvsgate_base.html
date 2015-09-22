@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us" >
+<head>
+<title>LVSGate Manager</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+{% block extrastyle %}{% endblock %}
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/static/admin/css/ie.css" /><![endif]-->
+
+<script type="text/javascript">window.__admin_media_prefix__ = "/static/";</script>
+
+{% block extrahead %}{% endblock %}
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class="{% block bodyclass %}{% endblock %}">
+
+<!-- Container -->
+<div id="container">
+
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        
+<h1 id="site-name">LVSGate Manager</h1>
+
+        </div>
+        
+        <div id="user-tools">
+            Welcome,
+            <strong>admin</strong>.
+            
+                
+                
+                <a href="/admin/password_change/">Change password</a> /
+                <a href="/accounts/logout/?next=/accounts/login/">Log out</a>
+            
+        </div>
+        
+        
+    </div>
+    <!-- END Header -->
+    
+    
+
+    
+        
+    
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}{% endblock %}">
+        
+	{% block content %}
+	{{ content }}
+	{% endblock %}
+
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

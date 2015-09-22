@@ -1,0 +1,55 @@
+{% extends "lvsgate_base.html" %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+{% block coltype %}colMS{% endblock %}
+
+{% block content %}
+        <h1>LVSGate Manager</h1>
+        
+<div id="content-main">
+
+
+    
+        <div class="module">
+        <table summary="Models available in the Auth application.">
+        <caption>VirtualServer</caption>
+        
+            <tr>
+            
+                <th scope="row"><a href="/lvsgate/vs/">VirtualServer</a></th>
+            
+
+            
+                <td><a href="/lvsgate/vs/add/" class="addlink">Add</a></td>
+            
+
+            
+                <td><a href="/lvsgate/vs/" class="changelink">Change</a></td>
+            
+            </tr>
+        
+            <tr>
+            
+                <th scope="row"><a href="/lvsgate/localaddress/">LocalAddess</a></th>
+            
+
+            
+                <td><a href="/lvsgate/localaddress/add/" class="addlink">Add</a></td>
+            
+
+            
+                <td><a href="/lvsgate/localaddress/" class="changelink">Change</a></td>
+            
+            </tr>
+        
+        </table>
+        </div>
+    
+
+</div>
+
+{% endblock %}
