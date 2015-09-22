@@ -3,6 +3,8 @@ import functools
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect 
 
+from lvsgate_manager import models
+
 def permission_required(fn):
   @functools.wraps(fn) 
   def need_login(request, *args, **kwargs):
@@ -14,15 +16,20 @@ def permission_required(fn):
 
 @permission_required
 def home(request):
-  return render_to_response("index.html")
+  return render_to_response("index.html",
+         {'title': 'LVSGate manager'})
 
 @permission_required
 def list_vs(request):
-  return render_to_response("vs.html", {'title': 'Virtual server'})
+  vs_list = models.VirtualServer.objects.all() 
+  return render_to_response("vs.html",
+        {'title': 'Virtual server', 'vs_list': vs_list})
  
 
 def add_vs(request):
-  pass
+  title = "Add virtual server"
+  return render_to_response("vs_edit.html",
+        {'title': title,})
 
 def del_vs(request):
   pass

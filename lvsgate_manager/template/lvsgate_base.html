@@ -58,10 +58,12 @@
 
     <!-- Content -->
     <div id="content" class="{% block coltype %}{% endblock %}">
-        
+        <h1>{{title}}<h1> 
+	<div id="content-main">
 	{% block content %}
 	{{ content }}
 	{% endblock %}
+	</div>
 
         <br class="clear" />
     </div>

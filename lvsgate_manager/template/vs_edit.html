@@ -1,0 +1,93 @@
+{% extends "lvsgate_base.html" %}
+
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+{% endblock %}
+
+{% block extrahead %}
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/SelectBox.js"></script>
+<script type="text/javascript"
+src="/static/admin/js/SelectFilter2.js"></script>
+<script type="text/javascript" src="/static/admin/js/calendar.js"></script>
+<script type="text/javascript"
+src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+{% endblock %}
+
+
+{% block prevlink %}<a href="/lvsgate/vs/">Virtual Server</a> &rsaquo;{% endblock %}
+
+
+{% block bodyclass %}auth-user change-form{% endblock %}
+
+
+{% block coltype %}colM{% endblock %}
+
+{% block content %}
+<form enctype="multipart/form-data" action="" method="post" id="user_form">
+<div style='display:none'><input type='hidden' name='{{token_name}}' value='{{token_value}}' /></div>
+
+<div>
+<fieldset class="module aligned ">
+
+<div class="form-row">
+
+	<div>
+	<label for="id_vsname" class="required">VS name:</label> 
+	<input id="id_vsname" type="text" name="vsname" value="" maxlength="256" />
+	<p class="help">Required.  256 characters or fewer.  Letters, digits and -/_ only.</p>
+	</div>
+
+	<div>
+	<label for="id_vsip" class="required">VS ip port:</label> 
+	<input id="id_vsip" type="text" name="vsip" value="" maxlength="256" />
+	:
+	<input id="id_vsport" type="text" name="vsport" value="80" maxlength="5" style="width:40px"/>
+	</div>	
+
+	<div>
+	<label for="id_protocol" class="required">Protocol:</label>
+	<select name="protocol">
+	<option value="TCP" selected="selected">UDP</option>
+	<option value="UDP">UDP</option>
+	</select>
+	<input id="id_protocol" type="hidden" class="select-across" value="0" name="select_across" />
+	</div>
+
+	<div>
+	<label for="id_fwd" class="required">FWD Method:</label>
+	<select name="fwd_method">
+	<option value="FNAT" selected="selected">FullNat</option>
+	<option value="NAT">Nat</option>
+	</select>
+	<input id="id_fwd" type="hidden" class="select-across" value="0" name="select_across" />
+	</div>
+
+	<div>
+	<label for="id_sched" class="required">Scheduler:</label>
+	<select name="sched">
+	<option value="rr" selected="selected">rr</option>
+	<option value="wrr">wrr</option>
+	<option value="lc">lc</option>
+	<option value="wlc">wlc</option>
+	</select>
+	<input id="id_sched" type="hidden" class="select-across" value="0" name="select_across" />
+	</div>
+
+</div>
+
+</fieldset>
+</div>
+
+{% endblock %}
+
+
