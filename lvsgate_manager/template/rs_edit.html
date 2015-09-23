@@ -1,0 +1,56 @@
+{% extends "lvsgate_base.html" %}
+
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+{% endblock %}
+
+{% block extrahead %}
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/SelectBox.js"></script>
+<script type="text/javascript" src="/static/admin/js/SelectFilter2.js"></script>
+{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block content %}
+<form enctype="multipart/form-data" action="" method="post" id="rs_form">
+<div style='display:none'><input type='hidden' name='{{token_name}}' value='{{token_value}}' /></div>
+{% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
+
+<div>
+<fieldset class="module aligned ">
+
+    <div class="form-row">
+	<div>
+	<label for="id_rsip" class="required">IP PORT:</label> 
+	<input id="id_rsip" type="text" name="rsip" value="" maxlength="256" />
+	:
+	<input id="id_rsport" type="text" name="rsport" value="80" maxlength="5" style="width:40px"/>
+	</div>	
+    </div>
+
+    <div class="form-row">
+	<div>
+	<label for="id_weight" class="required">Weight:</label> 
+	<input id="id_weight" type="text" name="rsip" value="" maxlength="256" />
+	</div>	
+    </div>
+
+</fieldset>
+
+<div class="submit-row">
+<input type="submit" value="Save" class="default" name="_save" />
+</div>
+
+</div>
+
+{% endblock %}

@@ -32,6 +32,17 @@ def add_vs(request):
         {'title': title, 'rise_nums': range(2, 11),
          'fall_nums': range(2, 11),})
 
+def list_rs(request):
+  return
+
+def add_rs(request):
+  is_popup = int(request.GET.get('_popup', 0))
+  return render_to_response("rs_edit.html",
+        {'title': "Add realserver", 'is_popup': is_popup})
+
+def del_rs(request):
+  return
+
 def del_vs(request):
   pass
 

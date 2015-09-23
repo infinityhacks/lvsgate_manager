@@ -16,6 +16,9 @@ urlpatterns = patterns('',
     url(r'^lvsgate/localaddress/add/$', 'lvsgate_manager.views.add_localaddress'),
     url(r'^lvsgate/localaddress/del/$', 'lvsgate_manager.views.del_localaddress'),
 
+    url(r'^lvsgate/rs/$', 'lvsgate_manager.views.list_rs'),
+    url(r'^lvsgate/rs/add/$', 'lvsgate_manager.views.add_rs'),
+    url(r'^lvsgate/rs/del/$', 'lvsgate_manager.views.del_rs'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

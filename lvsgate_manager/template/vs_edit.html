@@ -18,9 +18,6 @@
 <script type="text/javascript" src="/static/admin/js/SelectBox.js"></script>
 <script type="text/javascript"
 src="/static/admin/js/SelectFilter2.js"></script>
-<script type="text/javascript" src="/static/admin/js/calendar.js"></script>
-<script type="text/javascript"
-src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
 {% endblock %}
 
 
@@ -33,7 +30,7 @@ src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
 {% block coltype %}colM{% endblock %}
 
 {% block content %}
-<form enctype="multipart/form-data" action="" method="post" id="user_form">
+<form enctype="multipart/form-data" action="" method="post" id="vs_form">
 <div style='display:none'><input type='hidden' name='{{token_name}}' value='{{token_value}}' /></div>
 
 <div>
@@ -95,7 +92,7 @@ src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
     <div class="form-row">
 	<div>
 	<label for="id_ptime" class="required">Persistence timeout:</label> 
-	<input id="id_ptime" type="int" name="vsname" value="0"/>
+	<input id="id_ptime" type="text" name="vsname" value="0"/>
 	<p class="vCheckboxLabel">Session persistence seconds, zero disabled.</p>
 	</div>
     </div>
@@ -155,8 +152,55 @@ src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
 
 <fieldset class="module aligned ">
     <h2>Real Server</h2>
+    <div class="form-row">
+    	<div>
+	<a href="/lvsgate/rs/add" class="addlink" id="add_rs" onclick="return showAddAnotherPopup(this);">Add realserver</a>
+	</div>
+    </div>
+    <div class="form-row">
+    	<div class="results">
+	<table id="result_list" style="width: 100%">
+	<thead>
+		<tr>
 
+		<th style="width: 60px">
+		<div class="text"><span><input type="checkbox" id="action-toggle" /></span></div>
+		<div class="clear"></div>
+		</th>
+
+
+		<th scope="col"  class="sortable" style="width: 240px">
+		<div class="text">ip</div>
+		<div class="clear"></div>
+		</th>
+
+		<th scope="col"  class="sortable" style="width: 80px">
+		<div class="text">port</div>
+		<div class="clear"></div>
+		</th>
+
+		<th scope="col"  class="sortable" style="width: 80px">
+		<div class="text">weight</div>
+		<div class="clear"></div>
+		</th>
+		
+		<th scope="col">
+		</th>
+
+		</tr>
+	</table>
+	</thead>
+	</div>
+    </div>
 </fieldset>
+
+<div class="submit-row">
+<input type="submit" value="Save" class="default" name="_save" />
+<p class="deletelink-box"><a href="/lvsgate/vs/del/" class="deletelink">Delete</a></p>
+
+<input type="submit" value="Save and add another" name="_addanother"  />
+<input type="submit" value="Save and continue editing" name="_continue" />
+</div>
 
 </div>
 
